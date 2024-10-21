@@ -13,8 +13,10 @@ stage
 
 # Ignore packaged plugins and language packs
 *.phar
+!include/i18n/es_ES.phar
 
 # Ignore mPDF temp files
 include/mpdf/ttfontdata
 include/mpdf/tmp
 nbproject/
+setup
