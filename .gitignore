@@ -19,4 +19,5 @@ stage
 include/mpdf/ttfontdata
 include/mpdf/tmp
 nbproject/
+.vscode
 setup

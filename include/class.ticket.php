@@ -197,6 +197,12 @@ implements RestrictedAccess, Threadable, Searchable {
             /* @trans */ 'Web',
             'API' =>
             /* @trans */ 'API',
+            'WhatsApp' =>
+            /* @trans */ 'WhatsApp',
+            'ChatLive' =>
+            /* @trans */ 'ChatLive',
+            'Presencial' =>
+            /* @trans */ 'Presencial',
             'Other' =>
             /* @trans */ 'Other',
             );
