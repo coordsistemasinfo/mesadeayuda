@@ -4555,6 +4555,17 @@ img.avatar+img.avatar {
     max-height: 400px !important;
 }
 
+#header {
+    height: 50px;
+}
+#logo {
+    height: 44px;
+    padding: 0px 0 7px 0px;
+}
+
+#logo img {
+    max-height: 40px;
+}
 
 #container {
     width: 98% !important;
@@ -4574,4 +4585,15 @@ table.list {
     -moz-border-radius-bottomleft: 6px;
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
+}
+
+table.ticket_info{
+    width: 100% !important;    
+}
+div.avatar.pull-left{
+    display: none;
+}
+
+#content table:first-child{
+    width: 100% !important;    
 }
