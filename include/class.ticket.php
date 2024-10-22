@@ -192,7 +192,6 @@ implements RestrictedAccess, Threadable, Searchable {
             /* @trans */ 'Phone',
             'Email' =>
             /* @trans */ 'Email',
-
             'Web' =>
             /* @trans */ 'Web',
             'API' =>
