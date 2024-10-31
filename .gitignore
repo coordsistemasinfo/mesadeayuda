@@ -12,13 +12,10 @@ Vagrantfile
 stage
 
 # Ignore packaged plugins and language packs
-*.phar
-!include/i18n/es_ES.phar
-!include/plugins/auth-oauth2.phar
 
 # Ignore mPDF temp files
 include/mpdf/ttfontdata
 include/mpdf/tmp
 nbproject/
 .vscode
-setup
+setup/
