@@ -175,7 +175,7 @@ $ticketsResult = $DB->query($ticketsQuery);
             </div>
             <?php die("</div></body></html>") ?>
         <?php endif; ?>
-        <h1 class="mb-4">Listado de Tickets</h1>
+        <h2 class="mb-4 text-primary">Listado de Tickets</h2>
         <div class="d-flex justify-content-between align-items-center mb-3">
             <span>Mostrando
                 <select name="per_page" id="per_page">
