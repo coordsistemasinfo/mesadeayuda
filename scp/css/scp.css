@@ -4625,7 +4625,25 @@ tbody#dynamic-form td div input
     box-sizing: border-box;
     max-width: 97% !important;
     width: 97% !important;
+    height: 2.5em;
 }
-form[action="tickets.php?a=open"] select {
+form[action="tickets.php?a=open"] select
+{
     width: 500px;
+    height: 2.5em;
+}
+form#reply select, form#reply .select2.select2-container.select2-container--default {
+    min-width: 600px;
+    height: 2.3em;
+}
+form#reply .select2.select2-container.select2-container--default {
+    height: 3em;
+}
+form[action="tickets.php?a=open"] input {
+    height: 1.7em;
+}
+
+form#note input[type="text"]{
+    min-width: 80% !important;
+    height: 1.7em;
 }
