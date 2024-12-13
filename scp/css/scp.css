@@ -4607,16 +4607,13 @@ div.avatar.pull-left{
  width: 100%;
 }
 
-#new-org-form, #orgprofile {
 
-}
-
-#new-org-form, form table input,
-#new-org-form, form table textarea,
-#new-org-form, form select,
-#orgprofile, form table input,
-#orgprofile, form table textarea,
-#orgprofile, form select,
+#new-org-form form table input,
+#new-org-form form table textarea,
+#new-org-form form select,
+#orgprofile form table input,
+#orgprofile form table textarea,
+#orgprofile form select,
 #user-form form table input,
 #user-form form table textarea,
 #user-form form select,
