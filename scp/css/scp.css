@@ -4619,9 +4619,13 @@ div.avatar.pull-left{
 #user-form form select,
 #new-user-form form table input,
 #new-user-form form table textarea,
-#new-user-form form select
+#new-user-form form select,
+tbody#dynamic-form td div input
 {
     box-sizing: border-box;
     max-width: 97% !important;
     width: 97% !important;
+}
+form[action="tickets.php?a=open"] select {
+    width: 500px;
 }
