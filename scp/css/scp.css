@@ -4555,6 +4555,12 @@ img.avatar+img.avatar {
     max-height: 400px !important;
 }
 
+/**
+*
+* CUSTOM CSS  UNICOMFACAUCA
+*
+**/
+
 #header {
     height: 50px;
 }
@@ -4596,4 +4602,29 @@ div.avatar.pull-left{
 
 #content table:first-child{
     width: 100% !important;    
+}
+#customQ_nav {
+ width: 100%;
+}
+
+#new-org-form, #orgprofile {
+
+}
+
+#new-org-form, form table input,
+#new-org-form, form table textarea,
+#new-org-form, form select,
+#orgprofile, form table input,
+#orgprofile, form table textarea,
+#orgprofile, form select,
+#user-form form table input,
+#user-form form table textarea,
+#user-form form select,
+#new-user-form form table input,
+#new-user-form form table textarea,
+#new-user-form form select
+{
+    box-sizing: border-box;
+    max-width: 97% !important;
+    width: 97% !important;
 }

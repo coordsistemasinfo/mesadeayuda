@@ -1282,3 +1282,22 @@ img.avatar {
     margin-bottom: 0.3em;
     font-size: 1.1em;
 }
+
+
+/**
+*
+* CUSTOM CSS  UNICOMFACAUCA
+*
+**/
+form#ticketForm  table input,
+form#ticketForm  table select{
+  height: 2.5em;
+}
+
+form#ticketForm  table input,
+form#ticketForm  table select,
+form#ticketForm  table textarea{
+  box-sizing: border-box;
+  max-width: 97% !important;
+  width: 97% !important;
+}
