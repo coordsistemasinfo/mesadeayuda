@@ -4685,6 +4685,10 @@ textarea:focus {
     padding-right: 3em;
 }
 
+#content .tixTitle h3:first-child{
+    text-transform: uppercase;
+}
+
 #msg_info,
 .info-banner,
 #msg_notice,
