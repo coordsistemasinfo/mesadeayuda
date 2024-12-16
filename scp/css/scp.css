@@ -4564,6 +4564,7 @@ img.avatar+img.avatar {
 #header {
     height: 50px;
 }
+
 #logo {
     height: 44px;
     padding: 0px 0 7px 0px;
@@ -4593,18 +4594,20 @@ table.list {
     border-bottom-left-radius: 6px;
 }
 
-table.ticket_info{
-    width: 100% !important;    
+table.ticket_info {
+    width: 100% !important;
 }
-div.avatar.pull-left{
+
+div.avatar.pull-left {
     display: none;
 }
 
-#content table:first-child{
-    width: 100% !important;    
+#content table:first-child {
+    width: 100% !important;
 }
+
 #customQ_nav {
- width: 100%;
+    width: 100%;
 }
 
 
@@ -4620,30 +4623,81 @@ div.avatar.pull-left{
 #new-user-form form table input,
 #new-user-form form table textarea,
 #new-user-form form select,
-tbody#dynamic-form td div input
-{
+tbody#dynamic-form td div input {
     box-sizing: border-box;
     max-width: 97% !important;
     width: 97% !important;
     height: 2.5em;
 }
-form[action="tickets.php?a=open"] select
-{
+
+form[action="tickets.php?a=open"] select {
     width: 500px;
     height: 2.5em;
 }
-form#reply select, form#reply .select2.select2-container.select2-container--default {
+
+form#reply select,
+form#reply .select2.select2-container.select2-container--default {
     min-width: 600px;
     height: 2.3em;
 }
+
 form#reply .select2.select2-container.select2-container--default {
     height: 3em;
 }
+
 form[action="tickets.php?a=open"] input {
     height: 1.7em;
 }
 
-form#note input[type="text"]{
+form#note input[type="text"] {
     min-width: 80% !important;
     height: 1.7em;
+}
+
+
+input[type="date"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="text"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+select:focus,
+textarea:focus {
+    border-color: rgba(0, 123, 255, 0.6) !important;
+    /* Borde con opacidad */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4) !important;
+    /* Sombra con opacidad */
+}
+
+#content h3 {
+    color: #184E81;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    padding-right: 3em;
+}
+
+#msg_info,
+.info-banner,
+#msg_notice,
+.success-banner,
+.notice-banner,
+#msg_warning,
+.warning-banner,
+#msg_error,
+.error-banner,
+#notice_bar,
+#warning_bar,
+#error_bar {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
 }

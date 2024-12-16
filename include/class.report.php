@@ -24,11 +24,11 @@ class OverviewReport {
     var $start;
     var $end;
     static $end_choices = [
-        'now' => 'Up to today',
-        '+7 days' => 'One Week',
-        '+14 days' => 'Two Weeks',
-        '+1 month' => 'One Month',
-        '+3 months' => 'One Quarter'
+        'now' => 'Hasta hoy',
+        '+7 days' => 'Una semana',
+        '+14 days' => 'Dos semanas',
+        '+1 month' => 'Un mes',
+        '+3 months' => 'Un trimestre'
     ];
 
     var $format;
