@@ -4668,11 +4668,29 @@ input[type="time"]:focus,
 input[type="url"]:focus,
 input[type="week"]:focus,
 select:focus,
-textarea:focus {
-    border-color: rgba(0, 123, 255, 0.6) !important;
-    /* Borde con opacidad */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4) !important;
-    /* Sombra con opacidad */
+textarea:focus,
+.redactor-focus {
+    outline: none !important;
+    border-color: rgba(42, 103, 172, 0.8) !important;
+    /* Color más cercano a #2a67ac */
+    box-shadow: 0 0 5px rgba(42, 103, 172, 0.5) !important;
+    /* Sombra más suave */
+}
+
+.redactor-box,
+.redactor-box.redactor-styles-on {
+    -webkit-border-radius: 5px !important;
+    -moz-border-radius: 5px !important;
+    border-radius: 5px !important;
+}
+
+.redactor-toolbar {
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 #content h3 {
@@ -4685,7 +4703,7 @@ textarea:focus {
     padding-right: 3em;
 }
 
-#content .tixTitle h3:first-child{
+#content .tixTitle h3:first-child {
     text-transform: uppercase;
 }
 
