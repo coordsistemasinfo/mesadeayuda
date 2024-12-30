@@ -1635,3 +1635,204 @@ textarea:focus,
 }
 
 
+#container {
+  width: 90%;
+}
+
+#ticketForm  table{
+  width: 100% !important;
+}
+
+body{
+  background: none;
+}
+
+/* Aplica flexbox al formulario */
+#ticketForm > table {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten */
+  gap: 10px; /* Espacio entre los elementos */
+}
+
+#ticketForm > table > tbody hr{
+  display: none;
+}
+/* Segundo tbody: Primero y ocupa el 100% del ancho */
+#ticketForm > table > tbody:nth-child(2) {
+  order: -1; /* Aparece antes que los demás */
+  flex: 1 1 100%; /* Ocupa todo el ancho disponible */
+}
+
+/* Primer tbody: Alineado a la izquierda */
+#ticketForm > table > tbody:nth-child(1) {
+  order: 0; /* Mantiene su posición relativa después del segundo tbody */
+  flex: 1 1 40%; /* Ocupa el 40% del ancho */
+  align-self: flex-start; /* Alinea al inicio vertical */
+}
+
+/* Tercer tbody: Alineado a la derecha */
+#ticketForm > table > tbody:nth-child(3) {
+  order: 1; /* Aparece después del primero */
+  flex: 1 1 55%; /* Ocupa el 55% del ancho */
+  display: block; /* Permite que esté en la misma columna */
+}
+
+/* Cuarto tbody: Alineado abajo */
+#ticketForm > table > tbody:nth-child(4) {
+  order: 2; /* Aparece al final */
+  flex: 1 1 100%; /* Ocupa todo el ancho */
+  align-self: flex-end; /* Alinea al final vertical */
+}
+
+
+@media (max-width: 768px) {
+  /* Datos personales y solicitud ocupan el 100% */
+  #ticketForm > table > tbody:nth-child(1),
+  #ticketForm > table > tbody:nth-child(3) {
+    flex: 1 1 100%; /* Ocupan todo el ancho en pantallas pequeñas */
+  }
+}
+
+/* Asegura que los tr ocupen el 100% del ancho del tbody */
+#ticketForm > table > tbody > tr {
+  display: block; /* Convierte cada tr en un contenedor block */
+  width: 100%; /* Forza el 100% del ancho del tbody */
+}
+
+#ticketForm > table > tbody > tr > td {
+  display: block; /* Opcional: si necesitas controlar los elementos hijos */
+  width: 100%; /* Asegura que los td ocupen el ancho disponible */
+}
+
+
+
+/* Botón Primary (azul) */
+#ticketForm input[type="submit"], 
+#clientLogin input[type="submit"],
+#landing_page a.blue.button  {
+  background-color: #004996; /* Color de fondo Bootstrap primary */
+  color: #fff; /* Texto blanco */
+  border: 1px solid #004996; /* Borde azul */
+  padding: 0.375rem 0.75rem; /* Espaciado interno */
+  border-radius: 0.375rem; /* Bordes redondeados */
+  font-size: 1rem; /* Tamaño de fuente */
+  cursor: pointer; /* Manito al pasar el cursor */
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#ticketForm  input[type="submit"]:hover {
+  background-color: #003e80; /* Más oscuro al pasar el cursor */
+  border-color: #003a78;
+}
+
+/* Botón Secondary (gris) */
+#ticketForm  input[type="reset"] {
+  background-color: #6c757d; /* Color de fondo Bootstrap secondary */
+  color: #fff;
+  border: 1px solid #6c757d;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#ticketForm  input[type="reset"]:hover {
+  background-color: #5c636a;
+  border-color: #545b62;
+}
+
+/* Botón Light (blanco) */
+#ticketForm  input[type="button"] {
+  background-color: #f8f9fa; /* Color de fondo Bootstrap light */
+  color: #212529; /* Texto gris oscuro */
+  border: 1px solid #c7cace;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+#ticketForm  input[type="button"]:hover {
+  background-color: #e9ecef; /* Gris más oscuro al pasar el cursor */
+  border-color: #dee2e6;
+}
+
+
+
+/* Ajustes básicos para el contenedor de navegación */
+#nav {
+  margin: 0 20px;
+  padding: 0; /* Ajustar padding */
+  background: none; /* Quitar el fondo existente */
+  border-top: none;
+  border-bottom: 1px solid #dee2e6; /* Línea inferior como en nav-tabs */
+  box-shadow: none; /* Eliminar sombras */
+  display: flex; /* Para alineación horizontal */
+  justify-content: flex-start; /* Elementos alineados a la izquierda */
+  white-space: nowrap;
+  height: auto;
+}
+
+/* Quitar estilos de lista y forzar alineación horizontal */
+#nav li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para los enlaces */
+#nav li a {
+  display: block;
+  padding: 0.5rem 1rem; /* Espaciado como nav-tabs */
+  text-decoration: none; /* Sin subrayado */
+  color: #495057; /* Texto gris oscuro */
+  border: 1px solid transparent; /* Borde transparente por defecto */
+  border-bottom: none; /* Eliminar borde inferior */
+  background-color: transparent; /* Fondo transparente */
+  border-radius: 0.375rem 0.375rem 0 0; /* Bordes redondeados superiores */
+ 
+}
+#nav li a.new,
+#nav li a.home,
+#nav li a.status
+{
+background-image:none;
+}
+/* hover (como .nav-tabs) */
+#nav li a:hover {
+  color: #004996; /* Azul Bootstrap */
+  background-color: #f8f9fa; /* Fondo claro */
+  border-color: #dee2e6 #dee2e6 transparent; /* Borde como pestaña activa */
+}
+
+#nav li a.active{
+  color: #f8f9fa; /* Azul Bootstrap */
+  background-color: #004996; /* Fondo claro */
+  border-color: #004996 #dee2e6 transparent; /* Borde como pestaña activa */
+}
+
+h1{
+  color: #004996;
+}
+
+#msg_info,
+.info-banner,
+#msg_notice,
+.success-banner,
+.notice-banner,
+#msg_warning,
+.warning-banner,
+#msg_error,
+.error-banner,
+#notice_bar,
+#warning_bar,
+#error_bar {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
