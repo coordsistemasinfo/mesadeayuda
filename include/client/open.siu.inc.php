@@ -34,8 +34,8 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 
 ?>
 <h2 class="d-flex justify-content-between">
-    Crear Nueva Solicitud (Ticket) 
-    <a class="btn btn-primary ms-auto me-5" href="/tickets_list.php?user=<?=isset($_GET['email'])?$_GET['email']:$_POST['email']?>">    
+    Crear Nueva Solicitud (Ticket)
+    <a class="btn btn-primary ms-auto me-5" href="/tickets_list.php?user=<?= isset($_GET['email']) ? $_GET['email'] : $_POST['email'] ?>">
         <i class="icon-list"></i> Listar Mis Tickets
     </a>
 </h2>
@@ -51,7 +51,6 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
             <button class="nav-link " id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">1. <i class="icon-user"></i> Información de Contacto</button>
             <button class="nav-link active" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">2. <i class="icon-ticket"></i> Datos de la Solicitud</button>
             <!-- button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</button -->
-
         </div>
     </nav>
 
@@ -171,7 +170,7 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
                 <button type="button" id="back-1" class="btn btn-success text-white me-2" value="">
                     << Regresar</button>
                         <!-- button type="reset" class="btn btn-secondary me-2" name="reset" value="<?php echo __('Reset'); ?>"><?php echo __('Reset'); ?></button -->
-                        <button type="submit" class="btn btn-primary text-white"  value="<?php echo __('Create Ticket'); ?>"><?php echo __('Create Ticket'); ?></button>
+                        <button type="submit" class="btn btn-primary text-white" value="<?php echo __('Create Ticket'); ?>"><?php echo __('Create Ticket'); ?></button>
             </div>
         </div>
         <!-- div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">...</div -->
@@ -203,6 +202,19 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
         if ($("#nav-home div.error").get().length) {
             $(document.querySelector('#myTab button[data-bs-target="#nav-home"]')).click()
         }
+
+        const ref = document.referrer;
+
+        // Verificar si contiene 'siu.unicomfacauca.edu.co'
+        if (ref.includes('siu.unicomfacauca.edu.co')) {
+            const refUrl = new URL(ref);
+
+            // Si no hay parámetros
+            if (!refUrl.search || refUrl.search === '') {
+                $("#nav-home-tab").click();
+            }
+        }
+
 
 
     })
