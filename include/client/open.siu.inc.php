@@ -205,16 +205,21 @@ if ($info['topicId'] && ($topic = Topic::lookup($info['topicId']))) {
 
         const ref = document.referrer;
 
-        // Verificar si contiene 'siu.unicomfacauca.edu.co'
-        if (ref.includes('siu.unicomfacauca.edu.co')) {
+        // Verifica que NO esté en un iframe
+        const isNotIframe = window.top === window.self;
+
+        if (isNotIframe && ref.includes('siu.unicomfacauca.edu.co')) {
             const refUrl = new URL(ref);
 
-            // Si no hay parámetros
+            // Verifica que no tenga parámetros
             if (!refUrl.search || refUrl.search === '') {
                 $("#nav-home-tab").click();
+                $("#topicId").val('28').prop('readonly', true) ;
+                setTimeout(function() {
+                    $("select option[value='96']:contains('Sistema Integrado Universitario - SIU')").parent().val('96').prop('readonly', true) ;
+                }, 4000);
             }
         }
-
 
 
     })
