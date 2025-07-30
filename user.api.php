@@ -1,5 +1,10 @@
 <?php
 
+define("INCLUDE_DIR", 'include/');
+
+include INCLUDE_DIR . 'class.passwd.php';
+
+
 /**
  * @file
  * @brief Script para crear o actualizar usuarios en OSTicket a partir de una entrada JSON.
@@ -67,15 +72,15 @@ foreach ($requiredFields as $field) {
     }
 }
 
-$vinculacion_values = ['DOCENTE','ESTUDIANTE','ADMINISTRATIVO','PROVEEDOR','OTRO'];
-if(!in_array($postData->tipo_vinculacion,$vinculacion_values)){
+$vinculacion_values = ['ESTUDIANTE', 'ADMINISTRACION', 'APRENDICES', 'APRENDICES', 'DOCENTES DE MEDIO TIEMPO','DOCENTES DE TIEMPO COMPLETO','DOCENTES HORA CATEDRA','ADMINISTRATIVO Y DOCENTE','PROVEEDOR','OTRO'];
+if (!in_array($postData->tipo_vinculacion, $vinculacion_values)) {
     http_response_code(400);
-    die(json_encode(['status' => 'error', 'message' => "Los valores permitidos para 'tipo_vinculacion' son: ". implode(', ',$vinculacion_values) ]));
+    die(json_encode(['status' => 'error', 'message' => "Los valores permitidos para 'tipo_vinculacion' son: " . implode(', ', $vinculacion_values)]));
 }
 
 // Define el directorio de inclusión y carga el archivo de configuración
-define("INCLUDE_DIR", basename(__FILE__));
-include './include/ost-config.php';
+
+include INCLUDE_DIR . 'ost-config.php';
 
 // Establece la conexión con la base de datos
 $DB = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
@@ -103,7 +108,8 @@ try {
         }
     }
 
-    $_tipo_vinculacion = $ids_vinculacion[$postData->tipo_vinculacion].','.$DB->real_escape_string($postData->tipo_vinculacion);
+    $_tipo_vinculacion = $ids_vinculacion[$postData->tipo_vinculacion] . ',' . $DB->real_escape_string($postData->tipo_vinculacion);
+
     /**
      * @brief Actualiza la información del usuario si ya existe.
      *
@@ -114,7 +120,7 @@ try {
         $_SQL = "UPDATE `ost_user__cdata` SET 
                     `identificacion` = '" . $DB->real_escape_string($postData->identificacion) . "',
                     `area_depentencia` = '" . $DB->real_escape_string($postData->seccion_facultad) . "',
-                    `tipo_vinculacion` = '" . $DB->real_escape_string($postData->tipo_vinculacion). "' ,
+                    `tipo_vinculacion` = '" . $DB->real_escape_string($postData->tipo_vinculacion) . "' ,
                     `phone` = '" . $DB->real_escape_string($postData->telefono_movil) . "',
                     `programa` = '" . $DB->real_escape_string($postData->programa) . "'
                 WHERE `user_id` = {$emailData->user_id}";
@@ -127,6 +133,24 @@ try {
                 WHERE `id` = {$emailData->user_id}";
 
         $DB->query($_SQL);
+
+
+        $sqlCheck = "SELECT COUNT(*) as count FROM ost_user_account WHERE user_id = $userId";
+        $result = $DB->query($sqlCheck);
+        $row = $result->fetch_object();
+        if ($row->count > 0) { // Si existe, actualizar el registro            
+            $_SQL = "UPDATE ost_user_account
+                 SET status=1, timezone='America/Bogota'
+                 WHERE user_id=$userId";
+            $DB->query($_SQL);
+        } else {      // Si no existe, insertar un nuevo registro
+            $_paswd = Passwd::hash(explode('@', $postData->correo)[0]); // Hash de contraseña
+
+            $_SQL = "INSERT INTO ost_user_account
+                 (id, user_id, status, timezone, lang, username, passwd, backend, extra, registered)
+                 VALUES(NULL, $userId, 1, 'America/Bogota', NULL, NULL, '{$_paswd}', NULL, '{\"browser_lang\":\"es_ES\"}', current_timestamp())";
+            $DB->query($_SQL);
+        }
     } else {
         /**
          * @brief Crea un nuevo usuario si el correo no existe.
@@ -149,9 +173,18 @@ try {
 
             $_SQL = "INSERT INTO `ost_user__cdata` (`user_id`, `area_depentencia`, `identificacion`,  `tipo_vinculacion`, `phone`, `programa`) 
                             VALUES ($userId, '" .  $DB->real_escape_string($postData->seccion_facultad) . "', '" .
-                $DB->real_escape_string($postData->identificacion) . "', '".$DB->real_escape_string($postData->tipo_vinculacion)."', '" . 
-                $DB->real_escape_string($postData->telefono_movil) . "', '".
+                $DB->real_escape_string($postData->identificacion) . "', '" . $DB->real_escape_string($postData->tipo_vinculacion) . "', '" .
+                $DB->real_escape_string($postData->telefono_movil) . "', '" .
                 $DB->real_escape_string($postData->programa) . "')";
+
+            $DB->query($_SQL);
+
+
+            $_paswd =  Passwd::hash(explode('@', $postData->correo)[0]);
+
+            $_SQL = "INSERT INTO ost_user_account
+            (id, user_id, status, timezone, lang, username, passwd, backend, extra, registered)
+            VALUES(NULL, $userId, 1, 'America/Bogota', NULL, NULL, '{$_paswd}', NULL, '{\"browser_lang\":\"es_ES\"}', current_timestamp())";
 
             $DB->query($_SQL);
         }

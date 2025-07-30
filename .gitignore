@@ -19,3 +19,4 @@ include/mpdf/tmp
 nbproject/
 .vscode
 setup/
+.qodo
